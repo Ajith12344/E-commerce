@@ -1,0 +1,62 @@
+/* Ensure the carousel images have a maximum height and maintain their aspect ratio */
+.carousel-inner {
+    max-height: 350px; /* Adjust the height as needed */
+  }
+  
+  .carousel-inner img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Ensures the image covers the entire area without stretching */
+  }
+  .card {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card img {
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover img {
+    transform: scale(1.1);
+  }
+  
+  .card-body {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Adjust the opacity as needed */
+    padding: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card:hover .card-body {
+    background-color: rgba(0, 0, 0, 0.9); /* Darker background on hover */
+  }
+  
+  .single_product {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .single_product img {
+    transition: transform 0.3s ease;
+  }
+  
+  .single_product:hover img {
+    transform: scale(1.1);
+  }
+  
+  .product_caption {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7); /* Adjust the opacity as needed */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .single_product:hover .product_caption {
+    background-color: rgba(0, 0, 0, 0.9); /* Darker background on hover */
+  }
+  
