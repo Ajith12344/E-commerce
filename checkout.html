@@ -193,7 +193,7 @@
           const cartBadge = document.getElementById('cartBadge');
       
           function renderCartItems() {
-              fetch('http://127.0.0.1:5000/cart')
+              fetch('https://e-commerce-45qo.onrender.com/cart')
                   .then(response => {
                       if (!response.ok) {
                           throw new Error('Network response was not ok');
@@ -264,7 +264,7 @@
               console.log('Checkout details:', checkoutDetails);
       
               // Example: Send checkout details to server
-              fetch('http://127.0.0.1:5000/checkout', {
+              fetch('https://e-commerce-45qo.onrender.com/checkout', {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json'

@@ -89,7 +89,7 @@
                 </li>
               </ul>
               <div class="search mr-3">
-                <a href="search.html" class="btn btn-sm btn-outline-primary">Search</a>
+                <a href="#" class="btn btn-sm btn-outline-primary">Search</a>
               </div>
               <div class="cart">
                 <a href="cart.html">
@@ -302,7 +302,7 @@
   </script>
   <script>async function fetchCartItems() {
     try {
-      const response = await fetch('http://127.0.0.1:5000/cart');
+      const response = await fetch('https://e-commerce-45qo.onrender.com/cart');
       const cartItems = await response.json();
       const cartCount = cartItems.length;
       document.querySelector('.badge').innerText = cartCount;

@@ -30,7 +30,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const productId = urlParams.get('id');
 
-            fetch(`http://localhost:5000/api/products/${productId}`)
+            fetch(`https://e-commerce-45qo.onrender.com/api/products/${productId}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
@@ -133,7 +133,7 @@
             }
 
             function fetchRelatedProducts(category) {
-                fetch(`http://localhost:5000/api/products?category=${category}&limit=4`)
+                fetch(`https://e-commerce-45qo.onrender.com/api/products?category=${category}&limit=4`)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error(`HTTP error! status: ${response.status}`);
@@ -163,7 +163,7 @@
             }
 
             function addToCart(cartItem) {
-                fetch('http://localhost:5000/cart', {
+                fetch('https://e-commerce-45qo.onrender.com/cart', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -182,7 +182,7 @@
             function updateCartCount() {
                 const cartCountElement = document.getElementById('cartCount');
                 if (cartCountElement) {
-                    fetch('http://localhost:5000/cart')
+                    fetch('https://e-commerce-45qo.onrender.com/cart')
                         .then(response => response.json())
                         .then(cartItems => {
                             const totalCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
