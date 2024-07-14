@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const fetchLatestProducts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/products');
+        const response = await fetch('https://e-commerce-45qo.onrender.com/api/products');
         const latestProducts = await response.json();
   
         const latestProductsRow = document.getElementById('latest-products-row');
