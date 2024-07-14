@@ -1,16 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Order Confirmation</title>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-  <!-- style.css For Custom Styling  -->
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
-  <!-- fontawesome cdn For Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css">
 </head>
 <body class="bg-light">
 <div class="container">
@@ -28,94 +26,12 @@
     </div>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Shipping Details</h4>
-      <ul class="list-group mb-3">
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Name</h6>
-            <small class="text-muted" id="fullName"></small>
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Username</h6>
-            <small class="text-muted" id="username"></small>
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Email</h6>
-            <small class="text-muted" id="email"></small>
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Address</h6>
-            <small class="text-muted" id="address"></small>
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Address 2</h6>
-            <small class="text-muted" id="address2"></small>
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Country</h6>
-            <small class="text-muted" id="country"></small>
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">State</h6>
-            <small class="text-muted" id="state"></small>
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Zip</h6>
-            <small class="text-muted" id="zip"></small>
-          </div>
-        </li>
+      <ul id="shippingDetails" class="list-group mb-3">
+        <!-- Shipping details will be rendered here dynamically -->
       </ul>
       <h4 class="mb-3">Payment Details</h4>
-      <ul class="list-group mb-3">
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Payment Method</h6>
-            <small class="text-muted" id="paymentMethod"></small>
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Name on Card</h6>
-            <small class="text-muted" id="cardName"></small>
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Card Number</h6>
-            <small class="text-muted" id="cardNumber"></small>
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Expiration</h6>
-            <small class="text-muted" id="cardExpiration"></small>
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">CVV</h6>
-            <small class="text-muted" id="cardCVV"></small>
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Total Amount (INR)</h6>
-            <small class="text-muted" id="totalAmount"></small>
-          </div>
-        </li>
+      <ul id="paymentDetails" class="list-group mb-3">
+        <!-- Payment details will be rendered here dynamically -->
       </ul>
     </div>
   </div>
@@ -123,46 +39,127 @@
     <p class="mb-1">&copy; Ajith</p>
   </footer>
 </div>
+
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Retrieve checkout details from localStorage
-      const checkoutDetailsJSON = localStorage.getItem('checkoutDetails');
-      
-      if (!checkoutDetailsJSON) {
-        console.error('No checkout details found in localStorage.');
-        return; // Exit early if no checkout details are found
-      }
-  
-      const checkoutDetails = JSON.parse(checkoutDetailsJSON);
-  
-      // Display shipping details
-      document.getElementById('fullName').textContent = `${checkoutDetails.firstName || ''} ${checkoutDetails.lastName || ''}`;
-      document.getElementById('username').textContent = checkoutDetails.username || '';
-      document.getElementById('email').textContent = checkoutDetails.email || 'Not provided';
-      document.getElementById('address').textContent = checkoutDetails.address || '';
-      document.getElementById('address2').textContent = checkoutDetails.address2 || 'Not provided';
-      document.getElementById('country').textContent = checkoutDetails.country || '';
-      document.getElementById('state').textContent = checkoutDetails.state || '';
-      document.getElementById('zip').textContent = checkoutDetails.zip || '';
-  
-      // Display payment details
-      const paymentMethod = checkoutDetails.paymentMethod === 'credit' ? 'Credit card' :
-                            checkoutDetails.paymentMethod === 'debit' ? 'Debit card' :
-                            checkoutDetails.paymentMethod === 'cashOnDelivery' ? 'Cash on Delivery' :
-                            checkoutDetails.paymentMethod === 'upiPayment' ? 'Pay using UPI ID' :
-                            'Not provided';
-      document.getElementById('paymentMethod').textContent = paymentMethod;
-      document.getElementById('cardName').textContent = checkoutDetails.cardName || '';
-      document.getElementById('cardNumber').textContent = `**** **** **** ${checkoutDetails.cardNumber ? checkoutDetails.cardNumber.slice(-4) : ''}`;
-      document.getElementById('cardExpiration').textContent = checkoutDetails.cardExpiration || '';
-      document.getElementById('cardCVV').textContent = checkoutDetails.cardCVV || '';
-      document.getElementById('totalAmount').textContent = checkoutDetails.totalAmount || '';
-  
-      // Clear checkout details from localStorage after displaying
-      localStorage.removeItem('checkoutDetails');
-    });
-  </script>
-  
+document.addEventListener('DOMContentLoaded', function () {
+    // Fetch checkout details from MongoDB Atlas
+    fetch(`http://127.0.0.1:5000/checkout/latest`)
+        .then(response => response.json())
+        .then(data => {
+            // Display shipping details dynamically
+            document.getElementById('shippingDetails').innerHTML = `
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Name</h6>
+                        <small class="text-muted">${data.firstName || ''} ${data.lastName || ''}</small>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Username</h6>
+                        <small class="text-muted">${data.username || ''}</small>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Email</h6>
+                        <small class="text-muted">${data.email || 'Not provided'}</small>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Address</h6>
+                        <small class="text-muted">${data.address || ''}</small>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Address 2</h6>
+                        <small class="text-muted">${data.address2 || 'Not provided'}</small>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Country</h6>
+                        <small class="text-muted">${data.country || ''}</small>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">State</h6>
+                        <small class="text-muted">${data.state || ''}</small>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Zip</h6>
+                        <small class="text-muted">${data.zip || ''}</small>
+                    </div>
+                </li>
+            `;
+
+            // Display payment details dynamically
+            document.getElementById('paymentDetails').innerHTML = `
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Payment Method</h6>
+                        <small class="text-muted">${getPaymentMethod(data.paymentMethod)}</small>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Name on Card</h6>
+                        <small class="text-muted">${data.cardName || ''}</small>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Card Number</h6>
+                        <small class="text-muted">**** **** **** ${data.cardNumber ? data.cardNumber.slice(-4) : ''}</small>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Expiration</h6>
+                        <small class="text-muted">${data.cardExpiration || ''}</small>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">CVV</h6>
+                        <small class="text-muted">${data.cardCVV || ''}</small>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Total Amount (INR)</h6>
+                        <small class="text-muted">${data.totalAmount || ''}</small>
+                    </div>
+                </li>
+            `;
+        })
+        .catch(error => {
+            console.error('Error fetching checkout details:', error);
+            alert('Error fetching checkout details. Please try again.');
+        });
+
+    // Function to convert payment method code to text
+    function getPaymentMethod(code) {
+        switch (code) {
+            case 'credit':
+                return 'Credit card';
+            case 'debit':
+                return 'Debit card';
+            case 'cashOnDelivery':
+                return 'Cash on Delivery';
+            case 'upiPayment':
+                return 'Pay using UPI ID';
+            default:
+                return 'Not provided';
+        }
+    }
+});
+</script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -30,7 +30,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const productId = urlParams.get('id');
 
-            fetch(`http://localhost:3000/api/products/${productId}`)
+            fetch(`http://localhost:5000/api/products/${productId}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
@@ -40,7 +40,7 @@
                 .then(product => {
                     renderProductDetail(product);
                     setupQuantityInput(product);
-                    fetchRelatedProducts(product.category); // Fetch related products based on category
+                    fetchRelatedProducts(product.category);
                 })
                 .catch(error => console.error('Error fetching product:', error));
 
@@ -118,20 +118,22 @@
                 const increaseQtyBtn = document.getElementById('increaseQtyBtn');
 
                 decreaseQtyBtn.addEventListener('click', () => {
-                    if (quantityInput.value > 1) {
-                        quantityInput.value = parseInt(quantityInput.value) - 1;
+                    const currentQty = parseInt(quantityInput.value);
+                    if (currentQty > 1) {
+                        quantityInput.value = currentQty - 1;
                     }
                 });
 
                 increaseQtyBtn.addEventListener('click', () => {
-                    if (quantityInput.value < 10) {
-                        quantityInput.value = parseInt(quantityInput.value) + 1;
+                    const currentQty = parseInt(quantityInput.value);
+                    if (currentQty < 10) {
+                        quantityInput.value = currentQty + 1;
                     }
                 });
             }
 
             function fetchRelatedProducts(category) {
-                fetch(`http://localhost:3000/api/products?category=${category}&limit=3`)
+                fetch(`http://localhost:5000/api/products?category=${category}&limit=4`)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error(`HTTP error! status: ${response.status}`);
@@ -144,43 +146,54 @@
                     .catch(error => console.error('Error fetching related products:', error));
             }
 
-            function renderRelatedProducts(relatedProducts) {
+            function renderRelatedProducts(products) {
                 const relatedProductsContainer = document.getElementById('relatedProducts');
-                relatedProductsContainer.innerHTML = relatedProducts.map(product => `
-                    <div class="col-md-4 col-6 mb-4">
-                        <div class="border border-dark rounded shadow text-center p-3">
-                            <img src="${product.image}" class="img img-fluid mb-3" alt="${product.name}">
-                            <h5>${product.name}</h5>
-                            <a href="product_detail.html?id=${product.id}" class="btn btn-outline-primary btn-sm">View Details</a>
+                relatedProductsContainer.innerHTML = products.map(product => `
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                            <div class="card-body">
+                                <h5 class="card-title">${product.name}</h5>
+                                <p class="card-text">₹${product.price}</p>
+                                <a href="product_detail.html?id=${product.id}" class="btn btn-primary">View Details</a>
+                            </div>
                         </div>
                     </div>
                 `).join('');
             }
 
-            function addToCart(item) {
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                const existingItemIndex = cart.findIndex(cartItem => cartItem.id === item.id);
-
-                if (existingItemIndex !== -1) {
-                    // Item already exists in cart, update quantity
-                    cart[existingItemIndex].quantity += item.quantity;
-                } else {
-                    // Add new item to cart
-                    cart.push(item);
-                }
-
-                // Update localStorage
-                localStorage.setItem('cart', JSON.stringify(cart));
-
-                // Update cart count
-                updateCartCount();
+            function addToCart(cartItem) {
+                fetch('http://localhost:5000/cart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(cartItem)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Item added to cart:', data);
+                    alert('Item added to cart successfully!');
+                    updateCartCount();
+                })
+                .catch(error => console.error('Error adding item to cart:', error));
             }
 
             function updateCartCount() {
-                const cart = JSON.parse(localStorage.getItem('cart')) || [];
-                const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
-                document.getElementById('cartCount').innerText = cartCount;
+                const cartCountElement = document.getElementById('cartCount');
+                if (cartCountElement) {
+                    fetch('http://localhost:5000/cart')
+                        .then(response => response.json())
+                        .then(cartItems => {
+                            const totalCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+                            cartCountElement.innerText = totalCount;
+                        })
+                        .catch(error => console.error('Error updating cart count:', error));
+                }
             }
+
+            // Initialize cart count on page load
+            updateCartCount();
         });
     </script>
 </body>

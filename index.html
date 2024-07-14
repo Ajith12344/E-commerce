@@ -14,6 +14,11 @@
 
   <!-- Custom CSS -->
   <style>
+     .cart {
+      position: relative;
+    }
+    
+    
     /* Custom styles for images and hover effects */
     .carousel-inner img {
       width: 100%;
@@ -57,7 +62,6 @@
   <title>E-commerce</title>
 </head>
 <body>
-
       <!-- ==============header menu section starts here============== -->
       <section class="header_menu" id="header_menu">
         <div class="container-fluid px-0 shadow">
@@ -75,10 +79,7 @@
                   <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="product.html">Product</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="category.html">Category</a>
+                  <a class="nav-link" href="product.html">Category</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="about.html">About Us</a>
@@ -110,10 +111,10 @@
           <div class="container">
             <div class="row">
               <div class="col-md-6">
-                <img class="d-block w-100" src="assets/images/clothes.jpeg" alt="First slide">
+                <img class="d-block w-100" src="assets/images/green_clothes.jpeg" alt="First slide">
               </div>
               <div class="col-md-6">
-                <img class="d-block w-100" src="assets/images/clothes.jpeg" alt="Second slide">
+                <img class="d-block w-100" src="assets/images/nike.jpeg" alt="Second slide">
               </div>
             </div>
           </div>
@@ -122,10 +123,10 @@
           <div class="container">
             <div class="row">
               <div class="col-md-6">
-                <img class="d-block w-100" src="assets/images/clothes.jpeg" alt="Third slide">
+                <img class="d-block w-100" src="assets/images/music.jpeg" alt="Third slide">
               </div>
               <div class="col-md-6">
-                <img class="d-block w-100" src="assets/images/clothes.jpeg" alt="Fourth slide">
+                <img class="d-block w-100" src="assets/images/iphone.jpeg" alt="Fourth slide">
               </div>
             </div>
           </div>
@@ -142,224 +143,13 @@
     </div>
   </section>
 
-
-  <section class="shop_by_category py-5 my-5" id="shop_by_category">
-    <div class="container-fluid">
-      <div class="section_title text-center mb-5">
-        <h1 class="text-capitalize">Shop By Category</h1>
-      </div>
-      <div class="row">
-        <!-- Product 1 -->
-        <div class="col-md-4 col-12 mb-4">
-          <div class="card bg-dark text-white">
-            <a href="product1.html">
-              <img class="card-img img img-fluid" src="assets/images/clothes.jpeg" alt="Product 1">
-            </a>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title text-center"><a href="product1.html" class="text-white">Product 1</a></h5>
-            <p class="card-text text-center text-muted">Description of Product 1</p>
-          </div>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="col-md-4 col-12 mb-4">
-          <div class="card bg-dark text-white">
-            <a href="product2.html">
-              <img class="card-img img img-fluid" src="assets/images/clothes.jpeg" alt="Product 2">
-            </a>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title text-center"><a href="product2.html" class="text-white">Product 2</a></h5>
-            <p class="card-text text-center text-muted">Description of Product 2</p>
-          </div>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="col-md-4 col-12 mb-4">
-          <div class="card bg-dark text-white">
-            <a href="product3.html">
-              <img class="card-img img img-fluid" src="assets/images/clothes.jpeg" alt="Product 3">
-            </a>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title text-center"><a href="product3.html" class="text-white">Product 3</a></h5>
-            <p class="card-text text-center text-muted">Description of Product 3</p>
-          </div>
-        </div>
-
-        <!-- Product 4 -->
-        <div class="col-md-4 col-12 mb-4">
-          <div class="card bg-dark text-white">
-            <a href="product4.html">
-              <img class="card-img img img-fluid" src="assets/images/clothes.jpeg" alt="Product 4">
-            </a>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title text-center"><a href="product4.html" class="text-white">Product 4</a></h5>
-            <p class="card-text text-center text-muted">Description of Product 4</p>
-          </div>
-        </div>
-
-        <!-- Product 5 -->
-        <div class="col-md-4 col-12 mb-4">
-          <div class="card bg-dark text-white">
-            <a href="product5.html">
-              <img class="card-img img img-fluid" src="assets/images/clothes.jpeg" alt="Product 5">
-            </a>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title text-center"><a href="product5.html" class="text-white">Product 5</a></h5>
-            <p class="card-text text-center text-muted">Description of Product 5</p>
-          </div>
-        </div>
-
-        <!-- Product 6 -->
-        <div class="col-md-4 col-12 mb-4">
-          <div class="card bg-dark text-white">
-            <a href="product6.html">
-              <img class="card-img img img-fluid" src="assets/images/clothes.jpeg" alt="Product 6">
-            </a>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title text-center"><a href="product6.html" class="text-white">Product 6</a></h5>
-            <p class="card-text text-center text-muted">Description of Product 6</p>
-          </div>
-        </div>
-
-        <!-- Product 7 -->
-        <div class="col-md-4 col-12 mb-4">
-          <div class="card bg-dark text-white">
-            <a href="product7.html">
-              <img class="card-img img img-fluid" src="assets/images/clothes.jpeg" alt="Product 7">
-            </a>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title text-center"><a href="product7.html" class="text-white">Product 7</a></h5>
-            <p class="card-text text-center text-muted">Description of Product 7</p>
-          </div>
-        </div>
-
-        <!-- Product 8 -->
-        <div class="col-md-4 col-12 mb-4">
-          <div class="card bg-dark text-white">
-            <a href="product8.html">
-              <img class="card-img img img-fluid" src="assets/images/clothes.jpeg" alt="Product 8">
-            </a>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title text-center"><a href="product8.html" class="text-white">Product 8</a></h5>
-            <p class="card-text text-center text-muted">Description of Product 8</p>
-          </div>
-        </div>
-
-        <!-- Product 9 -->
-        <div class="col-md-4 col-12 mb-4">
-          <div class="card bg-dark text-white">
-            <a href="product9.html">
-              <img class="card-img img img-fluid" src="assets/images/clothes.jpeg" alt="Product 9">
-            </a>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title text-center"><a href="product9.html" class="text-white">Product 9</a></h5>
-            <p class="card-text text-center text-muted">Description of Product 9</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Latest Products Section -->
-  <section class="products py-5 my-5 bg-light" id="products">
+  <section class="products py-5 my-5 bg-light" id="latest-products">
     <div class="container">
       <div class="section_title text-center mb-5">
         <h1 class="text-capitalize">Latest Products</h1>
       </div>
-      <div class="row">
-        <!-- Product 1 -->
-        <div class="col-md-4 col-12 mb-4">
-          <div class="single_product shadow text-center p-1">
-            <div class="product_img">
-              <a href="product_detail.html">
-                <img src="assets/images/clothes.jpeg" class="img img-fluid" alt="Product 1">
-              </a>
-              <div class="new_product">
-                <span class="badge py-2 px-3 badge-pill badge-danger">New</span>
-              </div>
-            </div>
-            <div class="product-caption my-3">
-              <div class="product-ratting">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star low-star"></i>
-                <i class="far fa-star low-star"></i>
-              </div>
-              <h4><a href="product_detail.html">Green Dress with Details</a></h4>
-              <div class="price">
-                <b><span class="mr-1">₹</span><span>400</span></b>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Repeat for Products 2 to 9 -->
-        <!-- Product 2 -->
-        <div class="col-md-4 col-12 mb-4">
-          <div class="single_product shadow text-center p-1">
-            <div class="product_img">
-              <a href="product_detail.html">
-                <img src="assets/images/clothes.jpeg" class="img img-fluid" alt="Product 2">
-              </a>
-              <div class="new_product">
-                <span class="badge py-2 px-3 badge-pill badge-danger">New</span>
-              </div>
-            </div>
-            <div class="product-caption my-3">
-              <div class="product-ratting">
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star low-star"></i>
-                <i class="far fa-star low-star"></i>
-              </div>
-              <h4><a href="product_detail.html">Blue T-Shirt</a></h4>
-              <div class="price">
-                <b><span class="mr-1">₹</span><span>350</span></b>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="col-md-4 col-12 mb-4">
-          <div class="single_product shadow text-center p-1">
-            <div class="product_img">
-              <a href="product_detail.html">
-                <img src="assets/images/clothes.jpeg" class="img img-fluid" alt="Product 3">
-              </a>
-              <div class="new_product">
-                <span class="badge py-2 px-3 badge-pill badge-danger">New</span>
-              </div>
-            </div>
-            <div class="product-caption my-3">
-              <div class="product-ratting">
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star low-star"></i>
-                <i class="far fa-star low-star"></i>
-              </div>
-              <h4><a href="product_detail.html">Red Shoes</a></h4>
-              <div class="price">
-                <b><span class="mr-1">₹</span><span>500</span></b>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Add more products here -->
-
+      <div class="row" id="latest-products-row">
+        <!-- Products will be dynamically loaded here -->
       </div>
     </div>
   </section>
@@ -384,7 +174,7 @@
             </div>
             <div>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos impedit id accusamus quas maxime expedita nostrum atque delectus deleniti ad modi repellat debitis ipsam quisquam amet, odit voluptate recusandae distinctio? Perferendis tenetur quibusdam porro dolor dignissimos id magnam debitis vitae?
+                Experience our free shipping service, ensuring your orders arrive swiftly and affordably, making shopping with us both convenient and cost-effective for your needs.
               </p>
             </div>
           </div>
@@ -400,8 +190,7 @@
               </div>
             </div>
             <div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos impedit id accusamus quas maxime expedita nostrum atque delectus deleniti ad modi repellat debitis ipsam quisquam amet, odit voluptate recusandae distinctio? Perferendis tenetur quibusdam porro dolor dignissimos id magnam debitis vitae?
+              <p>Our secure payment system ensures your transactions are safe and protected, providing peace of mind while you shop with us online.
               </p>
             </div>
           </div>
@@ -418,7 +207,7 @@
             </div>
             <div>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos impedit id accusamus quas maxime expedita nostrum atque delectus deleniti ad modi repellat debitis ipsam quisquam amet, odit voluptate recusandae distinctio? Perferendis tenetur quibusdam porro dolor dignissimos id magnam debitis vitae?
+                Our 24/7 support team is dedicated to assisting you anytime, ensuring a seamless shopping experience and timely resolution of any inquiries or issues.
               </p>
             </div>
           </div>
@@ -437,7 +226,7 @@
               <a href="index.html"><img src="assets/images/logo.jpeg" width="150px" class="img img-fluid" alt="logo"></a>
             </div>
             <div>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit, totam est illum ipsum quas ad dignissimos magni veritatis natus voluptatem.
+              Delivering excellence in every click, Ajith's Ecommerce Company bridges quality with convenience, empowering your shopping journey with seamless service and satisfaction
             </div>
           </div>
           <div class="col-md-3 col-6">
@@ -504,14 +293,26 @@
 
   <!-- Smooth scroll back to top script -->
   <script>
-    $(document).ready(function() {
-      // Smooth scrolling to top
-      $('#button').on('click', function(e) {
-        e.preventDefault();
-        $('html, body').animate({scrollTop: 0}, '300');
+    document.getElementById('back-to-top-btn').addEventListener('click', function(event) {
+      event.preventDefault();
+      document.querySelector('#header_menu').scrollIntoView({
+        behavior: 'smooth'
       });
     });
   </script>
+  <script>async function fetchCartItems() {
+    try {
+      const response = await fetch('http://127.0.0.1:5000/cart');
+      const cartItems = await response.json();
+      const cartCount = cartItems.length;
+      document.querySelector('.badge').innerText = cartCount;
+    } catch (error) {
+      console.error('Error fetching cart items:', error);
+    }
+  }
 
+  // Call this function when the page loads
+  document.addEventListener('DOMContentLoaded', fetchCartItems);</script>
+  <script src="script.js"></script>
 </body>
 </html>

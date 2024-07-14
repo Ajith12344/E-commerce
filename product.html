@@ -25,7 +25,7 @@
                     <div class="mb-5">
                         <label><b>Category</b></label>
                         <ul class="list-group" id="category-list">
-                            <li class="list-group-item" data-category="All">All Categories</li>
+                            <li class="list-group-item active" data-category="All">All Categories</li>
                             <!-- Categories will be inserted here by JavaScript -->
                         </ul>
                     </div>
@@ -33,12 +33,12 @@
                         <form>
                             <div class="form-group">
                                 <label><b>Price</b></label>
-                                <input type="range" min="100" max="1000" step="100" class="form-control-range" id="price-range">
+                                <input type="range" min="100" max="200000" step="100" class="form-control-range" id="price-range">
                             </div>
                         </form>
                         <div class="d-flex justify-content-between">
                             <label id="min-price">₹100</label>
-                            <label id="max-price">₹1000</label>
+                            <label id="max-price">₹2000</label>
                         </div>
                     </div>
                 </div>
@@ -51,21 +51,16 @@
         </div>
     </section>
 
-    <!-- Include this script at the bottom of your body -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             let allProducts = [];
-            let selectedCategory = null;
+            let selectedCategory = 'All';
             let maxPrice = 1000;
 
+            // Fetch products from the API
             function fetchProducts() {
-                fetch('http://localhost:3000/api/products')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-                        return response.json();
-                    })
+                fetch('http://localhost:5000/api/products')
+                    .then(response => response.json())
                     .then(products => {
                         allProducts = products;
                         renderCategories(products);
@@ -74,6 +69,7 @@
                     .catch(error => console.error('Error fetching products:', error));
             }
 
+            // Render categories dynamically
             function renderCategories(products) {
                 const categoryList = document.getElementById('category-list');
                 const categories = ['All', ...new Set(products.map(product => product.category))];
@@ -82,11 +78,12 @@
                 `).join('');
             }
 
+            // Render products dynamically based on selected filters
             function renderProducts(products) {
                 const productContainer = document.getElementById('product-list');
                 productContainer.innerHTML = '';
                 products.forEach(product => {
-                    if ((selectedCategory === 'All' || selectedCategory === null || product.category === selectedCategory) && product.price <= maxPrice) {
+                    if ((selectedCategory === 'All' || product.category === selectedCategory) && product.price <= maxPrice) {
                         const productElement = `
                             <div class="col-md-4 col-12 mb-4">
                                 <div class="single_product shadow text-center p-3">
@@ -111,14 +108,16 @@
                 });
             }
 
+            // Event listener for price range filter
             document.getElementById('price-range').addEventListener('input', function() {
                 maxPrice = this.value;
                 document.getElementById('max-price').textContent = `₹${maxPrice}`;
                 renderProducts(allProducts);
             });
 
+            // Event listener for category filter
             document.getElementById('category-list').addEventListener('click', function(event) {
-                if (event.target && event.target.nodeName == 'LI') {
+                if (event.target && event.target.nodeName === 'LI') {
                     document.querySelectorAll('#category-list .list-group-item').forEach(item => item.classList.remove('active'));
                     event.target.classList.add('active');
                     selectedCategory = event.target.getAttribute('data-category');
@@ -126,6 +125,7 @@
                 }
             });
 
+            // Fetch products on page load
             fetchProducts();
         });
     </script>

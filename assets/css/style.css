@@ -1,7 +1,7 @@
-/* Ensure the carousel images have a maximum height and maintain their aspect ratio */
+/* Ensure the carousel images have a maximum height and maintain their aspect ratio
 .carousel-inner {
-    max-height: 350px; /* Adjust the height as needed */
-  }
+    max-height: 400px; /* Adjust the height as needed */
+   
   
   .carousel-inner img {
     width: 100%;
@@ -49,7 +49,7 @@
   
   .product_caption {
     padding: 10px;
-    background-color: rgba(0, 0, 0, 0.7); /* Adjust the opacity as needed */
+    background-color: rgb(255, 255, 255); /* Adjust the opacity as needed */
     position: absolute;
     bottom: 0;
     width: 100%;

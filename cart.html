@@ -47,8 +47,39 @@
             renderCartItems();
             updateOrderSummary();
 
-            function renderCartItems() {
-                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            async function fetchCart() {
+                const response = await fetch('http://localhost:5000/cart');
+                return await response.json();
+            }
+
+            async function addItemToCart(item) {
+                await fetch('http://localhost:5000/cart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(item)
+                });
+            }
+
+            async function updateItemInCart(id, item) {
+                await fetch(`http://localhost:5000/cart/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(item)
+                });
+            }
+
+            async function removeItemFromCart(id) {
+                await fetch(`http://localhost:5000/cart/${id}`, {
+                    method: 'DELETE'
+                });
+            }
+
+            async function renderCartItems() {
+                const cart = await fetchCart();
                 const cartItemsContainer = document.getElementById('cartItems');
 
                 cartItemsContainer.innerHTML = cart.map(item => `
@@ -73,8 +104,8 @@
                 updateCartCount();
             }
 
-            function updateOrderSummary() {
-                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            async function updateOrderSummary() {
+                const cart = await fetchCart();
                 const orderSummaryContainer = document.getElementById('orderSummary');
                 let totalPrice = 0;
 
@@ -97,43 +128,37 @@
                 `;
             }
 
-            function updateCartCount() {
-                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            async function updateCartCount() {
+                const cart = await fetchCart();
                 const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
                 document.getElementById('cartCount').innerText = cartCount;
             }
 
-            window.removeItem = function(id) {
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                const itemIndex = cart.findIndex(item => item.id === id);
-
-                if (itemIndex !== -1) {
-                    cart.splice(itemIndex, 1);
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                    renderCartItems();
-                    updateOrderSummary();
-                }
+            window.removeItem = async function(id) {
+                await removeItemFromCart(id);
+                renderCartItems();
+                updateOrderSummary();
             };
 
-            window.incrementQuantity = function(id) {
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            window.incrementQuantity = async function(id) {
+                const cart = await fetchCart();
                 const itemIndex = cart.findIndex(item => item.id === id);
 
                 if (itemIndex !== -1) {
                     cart[itemIndex].quantity++;
-                    localStorage.setItem('cart', JSON.stringify(cart));
+                    await updateItemInCart(id, cart[itemIndex]);
                     renderCartItems();
                     updateOrderSummary();
                 }
             };
 
-            window.decrementQuantity = function(id) {
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            window.decrementQuantity = async function(id) {
+                const cart = await fetchCart();
                 const itemIndex = cart.findIndex(item => item.id === id);
 
                 if (itemIndex !== -1 && cart[itemIndex].quantity > 1) {
                     cart[itemIndex].quantity--;
-                    localStorage.setItem('cart', JSON.stringify(cart));
+                    await updateItemInCart(id, cart[itemIndex]);
                     renderCartItems();
                     updateOrderSummary();
                 }
