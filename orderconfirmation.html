@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Order Confirmation</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+  <!-- style.css For Custom Styling  -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- fontawesome cdn For Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css">
+</head>
+<body class="bg-light">
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Order Confirmation</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Order Summary</span>
+      </h4>
+      <ul id="orderDetails" class="list-group mb-3">
+        <!-- Order details will be rendered here dynamically -->
+      </ul>
+    </div>
+    <div class="col-md-8 order-md-1">
+      <h4 class="mb-3">Shipping Details</h4>
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Name</h6>
+            <small class="text-muted" id="fullName"></small>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Username</h6>
+            <small class="text-muted" id="username"></small>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Email</h6>
+            <small class="text-muted" id="email"></small>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Address</h6>
+            <small class="text-muted" id="address"></small>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Address 2</h6>
+            <small class="text-muted" id="address2"></small>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Country</h6>
+            <small class="text-muted" id="country"></small>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">State</h6>
+            <small class="text-muted" id="state"></small>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Zip</h6>
+            <small class="text-muted" id="zip"></small>
+          </div>
+        </li>
+      </ul>
+      <h4 class="mb-3">Payment Details</h4>
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Payment Method</h6>
+            <small class="text-muted" id="paymentMethod"></small>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Name on Card</h6>
+            <small class="text-muted" id="cardName"></small>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Card Number</h6>
+            <small class="text-muted" id="cardNumber"></small>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Expiration</h6>
+            <small class="text-muted" id="cardExpiration"></small>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">CVV</h6>
+            <small class="text-muted" id="cardCVV"></small>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Total Amount (INR)</h6>
+            <small class="text-muted" id="totalAmount"></small>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; Ajith</p>
+  </footer>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Retrieve checkout details from localStorage
+      const checkoutDetailsJSON = localStorage.getItem('checkoutDetails');
+      
+      if (!checkoutDetailsJSON) {
+        console.error('No checkout details found in localStorage.');
+        return; // Exit early if no checkout details are found
+      }
+  
+      const checkoutDetails = JSON.parse(checkoutDetailsJSON);
+  
+      // Display shipping details
+      document.getElementById('fullName').textContent = `${checkoutDetails.firstName || ''} ${checkoutDetails.lastName || ''}`;
+      document.getElementById('username').textContent = checkoutDetails.username || '';
+      document.getElementById('email').textContent = checkoutDetails.email || 'Not provided';
+      document.getElementById('address').textContent = checkoutDetails.address || '';
+      document.getElementById('address2').textContent = checkoutDetails.address2 || 'Not provided';
+      document.getElementById('country').textContent = checkoutDetails.country || '';
+      document.getElementById('state').textContent = checkoutDetails.state || '';
+      document.getElementById('zip').textContent = checkoutDetails.zip || '';
+  
+      // Display payment details
+      const paymentMethod = checkoutDetails.paymentMethod === 'credit' ? 'Credit card' :
+                            checkoutDetails.paymentMethod === 'debit' ? 'Debit card' :
+                            checkoutDetails.paymentMethod === 'cashOnDelivery' ? 'Cash on Delivery' :
+                            checkoutDetails.paymentMethod === 'upiPayment' ? 'Pay using UPI ID' :
+                            'Not provided';
+      document.getElementById('paymentMethod').textContent = paymentMethod;
+      document.getElementById('cardName').textContent = checkoutDetails.cardName || '';
+      document.getElementById('cardNumber').textContent = `**** **** **** ${checkoutDetails.cardNumber ? checkoutDetails.cardNumber.slice(-4) : ''}`;
+      document.getElementById('cardExpiration').textContent = checkoutDetails.cardExpiration || '';
+      document.getElementById('cardCVV').textContent = checkoutDetails.cardCVV || '';
+      document.getElementById('totalAmount').textContent = checkoutDetails.totalAmount || '';
+  
+      // Clear checkout details from localStorage after displaying
+      localStorage.removeItem('checkoutDetails');
+    });
+  </script>
+  
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

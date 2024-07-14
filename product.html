@@ -1,146 +1,138 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, shrink-to-fit=no">
-  <meta name="description" content="Your website description here">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-  <!-- FontAwesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" 
-    integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" />
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
-
-  <title>Latest Products</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- style.css For Custom Styling  -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- fontawesome cdn For Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Products</title>
 </head>
 <body>
-
-  <!-- Navigation Section (You can reuse your existing navigation) -->
-  <header class="header_menu" id="header_menu">
-    <!-- Your navigation code goes here -->
-  </header>
-
-  <!-- Latest Products Section -->
-  <section class="products py-5 my-5 bg-light" id="products">
-    <div class="container">
-      <div class="section_title text-center mb-5">
-        <h1 class="text-capitalize">Latest Products</h1>
-      </div>
-      <div class="row">
-        <!-- Product 1 -->
-        <div class="col-md-4 col-12 mb-4">
-          <div class="single_product shadow text-center p-1">
-            <div class="product_img">
-              <a href="product_detail.html">
-                <img src="assets/images/clothes.jpeg" class="img img-fluid" alt="Product 1">
-              </a>
-              <div class="new_product">
-                <span class="badge py-2 px-3 badge-pill badge-danger">New</span>
-              </div>
+    <section class="products py-5 my-5" id="products">
+        <div class="container">
+            <div class="section_title text-center mb-5">
+                <h1 class="text-capitalize">Products</h1>
             </div>
-            <div class="product-caption my-3">
-              <div class="product-ratting">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star low-star"></i>
-                <i class="far fa-star low-star"></i>
-              </div>
-              <h4><a href="product_detail.html">Green Dress with Details</a></h4>
-              <div class="price">
-                <b><span class="mr-1">₹</span><span>400</span></b>
-              </div>
+            <div class="row">
+                <div class="col-md-3 border-right mb-5">
+                    <h4 class="mb-5 border-bottom">Filters</h4>
+                    <div class="mb-5">
+                        <label><b>Category</b></label>
+                        <ul class="list-group" id="category-list">
+                            <li class="list-group-item" data-category="All">All Categories</li>
+                            <!-- Categories will be inserted here by JavaScript -->
+                        </ul>
+                    </div>
+                    <div>
+                        <form>
+                            <div class="form-group">
+                                <label><b>Price</b></label>
+                                <input type="range" min="100" max="1000" step="100" class="form-control-range" id="price-range">
+                            </div>
+                        </form>
+                        <div class="d-flex justify-content-between">
+                            <label id="min-price">₹100</label>
+                            <label id="max-price">₹1000</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row" id="product-list">
+                        <!-- Products will be inserted here by JavaScript -->
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
+    </section>
 
-        <!-- Repeat for Products 2 to 9 -->
-        <!-- Product 2 -->
-        <div class="col-md-4 col-12 mb-4">
-          <div class="single_product shadow text-center p-1">
-            <div class="product_img">
-              <a href="product_detail.html">
-                <img src="assets/images/clothes.jpeg" class="img img-fluid" alt="Product 2">
-              </a>
-              <div class="new_product">
-                <span class="badge py-2 px-3 badge-pill badge-danger">New</span>
-              </div>
-            </div>
-            <div class="product-caption my-3">
-              <div class="product-ratting">
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star low-star"></i>
-                <i class="far fa-star low-star"></i>
-              </div>
-              <h4><a href="product_detail.html">Blue T-Shirt</a></h4>
-              <div class="price">
-                <b><span class="mr-1">₹</span><span>350</span></b>
-              </div>
-            </div>
-          </div>
-        </div>
+    <!-- Include this script at the bottom of your body -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let allProducts = [];
+            let selectedCategory = null;
+            let maxPrice = 1000;
 
-        <!-- Product 3 -->
-        <div class="col-md-4 col-12 mb-4">
-          <div class="single_product shadow text-center p-1">
-            <div class="product_img">
-              <a href="product_detail.html">
-                <img src="assets/images/clothes.jpeg" class="img img-fluid" alt="Product 3">
-              </a>
-              <div class="new_product">
-                <span class="badge py-2 px-3 badge-pill badge-danger">New</span>
-              </div>
-            </div>
-            <div class="product-caption my-3">
-              <div class="product-ratting">
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star low-star"></i>
-                <i class="far fa-star low-star"></i>
-              </div>
-              <h4><a href="product_detail.html">Red Shoes</a></h4>
-              <div class="price">
-                <b><span class="mr-1">₹</span><span>500</span></b>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Add more products here -->
+            function fetchProducts() {
+                fetch('http://localhost:3000/api/products')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(products => {
+                        allProducts = products;
+                        renderCategories(products);
+                        renderProducts(products);
+                    })
+                    .catch(error => console.error('Error fetching products:', error));
+            }
 
-      </div>
-    </div>
-  </section>
+            function renderCategories(products) {
+                const categoryList = document.getElementById('category-list');
+                const categories = ['All', ...new Set(products.map(product => product.category))];
+                categoryList.innerHTML = categories.map(category => `
+                    <li class="list-group-item" data-category="${category}">${category}</li>
+                `).join('');
+            }
 
-  <!-- Footer Section -->
-  <footer class="footer bg-light py-3">
-    <div class="container">
-      <div class="row">
-        <div class="col text-center">
-          <p class="mb-0">© 2024 Your Company Name. All rights reserved.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
+            function renderProducts(products) {
+                const productContainer = document.getElementById('product-list');
+                productContainer.innerHTML = '';
+                products.forEach(product => {
+                    if ((selectedCategory === 'All' || selectedCategory === null || product.category === selectedCategory) && product.price <= maxPrice) {
+                        const productElement = `
+                            <div class="col-md-4 col-12 mb-4">
+                                <div class="single_product shadow text-center p-3">
+                                    <div class="product_img">
+                                        <a href="product_detail.html?id=${product.id}"><img src="${product.image}" class="img-fluid" alt="Product Image"></a>
+                                    </div>
+                                    <div class="product-caption my-3">
+                                        <div class="product-ratting">
+                                            ${Array.from({ length: product.rating }, () => '<i class="fas fa-star"></i>').join('')}
+                                            ${Array.from({ length: 5 - product.rating }, () => '<i class="far fa-star"></i>').join('')}
+                                        </div>
+                                        <h5><a href="product_detail.html?id=${product.id}">${product.name}</a></h5>
+                                        <div class="price">
+                                            <b><span class="mr-1">₹</span><span>${product.price}</span></b>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        productContainer.innerHTML += productElement;
+                    }
+                });
+            }
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" 
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" 
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  <!-- Custom JavaScript -->
-  <script src="assets/js/script.js"></script>
+            document.getElementById('price-range').addEventListener('input', function() {
+                maxPrice = this.value;
+                document.getElementById('max-price').textContent = `₹${maxPrice}`;
+                renderProducts(allProducts);
+            });
+
+            document.getElementById('category-list').addEventListener('click', function(event) {
+                if (event.target && event.target.nodeName == 'LI') {
+                    document.querySelectorAll('#category-list .list-group-item').forEach(item => item.classList.remove('active'));
+                    event.target.classList.add('active');
+                    selectedCategory = event.target.getAttribute('data-category');
+                    renderProducts(allProducts);
+                }
+            });
+
+            fetchProducts();
+        });
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
 </html>

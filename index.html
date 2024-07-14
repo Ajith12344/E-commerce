@@ -5,11 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-tDkxrwkacC11l6IbV3lGqwSwVvUeUG0e9Ds4zViRH5hr2OVdZo0InhSyWcIcYZT05kd5DyKKa/nRbAbabF5d7A==" crossorigin="anonymous" />
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+   <!-- style.css For Custom Styling  -->
+   <link rel="stylesheet" href="assets/css/style.css">
+   <!-- fontawesome cdn For Icons -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Custom CSS -->
   <style>
@@ -57,35 +58,49 @@
 </head>
 <body>
 
-  <!-- Navigation Section -->
-  <header class="header_menu" id="header_menu">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="index.html"><img src="assets/images/logo.jpeg" width="150px" class="img-fluid" alt="Logo"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Offers & Discounts</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Get Coupon</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact Us</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+      <!-- ==============header menu section starts here============== -->
+      <section class="header_menu" id="header_menu">
+        <div class="container-fluid px-0 shadow">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+            <a class="navbar-brand pl-5 pl-small-0" href="index.html">
+              <img src="assets/images/logo.jpeg" class="img img-fluid" width="120px" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mx-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="product.html">Product</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="category.html">Category</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+              </ul>
+              <div class="search mr-3">
+                <a href="search.html" class="btn btn-sm btn-outline-primary">Search</a>
+              </div>
+              <div class="cart">
+                <a href="cart.html">
+                  <i class="fas fa-shopping-cart fa-2x"></i>
+                  <span class="badge badge-pill badge-primary">24</span>
+                </a>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </section>
+      <!-- ==============header menu section ends here============== -->
 
  <!-- Carousel Section -->
  <section class="header_carousel" id="header_carousel">
