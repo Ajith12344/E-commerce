@@ -201,6 +201,26 @@ const contactSchema = new mongoose.Schema({
     } catch (error) {
       res.status(400).json({ error: 'Failed to save contact' });
     }
+
+    app.post('/dialogflow/webhook', async (req, res) => {
+        const intentName = req.body.queryResult.intent.displayName;
+    
+        if (intentName === 'Product Inquiry') {
+            const productName = req.body.queryResult.parameters.product;
+            const product = await Product.findOne({ name: productName });
+            if (product) {
+                res.json({
+                    fulfillmentText: `We have ${product.name} for ₹${product.price}. Would you like to add it to your cart?`
+                });
+            } else {
+                res.json({
+                    fulfillmentText: `Sorry, the product "${productName}" is not available.`
+                });
+            }
+        }
+        // Handle other intents
+    });
+    
   });
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

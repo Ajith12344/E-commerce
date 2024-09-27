@@ -1,0 +1,116 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+#chatbot {
+    display: none; /* Initially hidden */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    z-index: 1050; /* Ensure it's above other elements */
+}
+
+#chatbot.show {
+    display: block; /* Show when activated */
+}
+
+.card {
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.user-message,
+.bot-message {
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 20px;
+    max-width: 80%;
+    transition: all 0.3s ease;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: #fff;
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+.bot-message {
+    background-color: #e9ecef;
+    color: #333;
+    align-self: flex-start;
+}
+
+.product-details {
+    display: flex;
+    margin: 10px 0;
+}
+
+.product-details img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.typing-indicator span {
+    background-color: #007bff;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin: 0 3px;
+    animation: typing 0.6s infinite alternate;
+}
+
+@keyframes typing {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.5);
+    }
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group button {
+    border-radius: 0 20px 20px 0;
+}
+
+.chat-header {
+    position: relative;
+}
+
+.chat-header h5 {
+    margin: 0;
+    padding-right: 30px; /* Space for close button */
+}
+
+.chat-header .btn-close {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+#open-chat {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.message-time {
+    font-size: 0.8em;
+    color: #888;
+}
